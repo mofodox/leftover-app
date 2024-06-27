@@ -4,6 +4,8 @@ import Link from "next/link";
 import {RegisterLink, LoginLink, LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
 
+import DialogDrawer from "./DialogDrawer";
+
 export default async function Navbar() {
     const {getUser} = getKindeServerSession()
     const user = await getUser()
@@ -14,12 +16,13 @@ export default async function Navbar() {
                 <Link href="/">Leftover</Link>
             </div>
             <div className="nav-links flex gap-4">
-
                 {user ? (
-                    <>
-                        <Image className="rounded-full" src={user.picture} alt={"user"} width={32} height={32}/>
+                    <div className="flex justify-center items-center gap-4">
+                        <Link href="/dashboard">Dashboard</Link>
+                        <DialogDrawer />
                         <LogoutLink>Log out</LogoutLink>
-                    </>
+                        
+                    </div>
                 ):(
                     <>
                         <LoginLink>Log in</LoginLink>

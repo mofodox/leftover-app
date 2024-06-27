@@ -27,7 +27,7 @@ export default async function Home() {
                     We do not connect to any financial institutions and your data will be saved on our servers.
                 </p>
                 {!user ? (
-                    <LoginLink className="md:w-40 bg-yellow-400 hover:bg-yellow-500 text-black font-medium text-center py-2 px-4 rounded">Sign in</LoginLink>
+                    <LoginLink className="md:w-40 bg-yellow-400 hover:bg-yellow-500 text-black font-medium text-center py-2 px-4 rounded">Get Started</LoginLink>
                 ) : (
                     <Link className="md:w-48 bg-yellow-400 hover:bg-yellow-500 text-black font-medium text-center py-2 px-4 rounded" href={"/dashboard"}>Go to Dashboard</Link>
                 )}
