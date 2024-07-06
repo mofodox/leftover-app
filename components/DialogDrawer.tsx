@@ -1,8 +1,11 @@
-'use client'
+"use client"
 
 import {useState} from 'react'
 import { useMediaQuery } from '@uidotdev/usehooks'
 import { cn } from '@/lib/utils'
+
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+
 import {
   Dialog,
   DialogContent,
@@ -29,7 +32,11 @@ import {
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 
-export default function DialogDrawer() {
+type DialogDrawerProps = {
+  userImage: string;
+}
+
+export default function DialogDrawer({userImage}: DialogDrawerProps) {
   const [open, setOpen] = useState(false)
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
@@ -38,7 +45,7 @@ export default function DialogDrawer() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src={userImage} />
             </Avatar>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
@@ -58,7 +65,7 @@ export default function DialogDrawer() {
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage src={userImage} />
         </Avatar>
       </DrawerTrigger>
       <DrawerContent>
@@ -91,6 +98,7 @@ function ProfileForm({ className }: React.ComponentProps<"form">) {
         <Input id="username" defaultValue="@shadcn" />
       </div>
       <Button type="submit">Save changes</Button>
+      <LogoutLink className="w-full p-2 bg-red-400 rounded-lg text-sm font-medium text-center">Log out</LogoutLink>
     </form>
   )
 }
