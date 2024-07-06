@@ -19,9 +19,7 @@ export default async function Navbar() {
                 {user ? (
                     <div className="flex justify-center items-center gap-4">
                         <Link href="/dashboard">Dashboard</Link>
-                        <DialogDrawer />
-                        <LogoutLink>Log out</LogoutLink>
-                        
+                        <DialogDrawer userImage={user.picture!}/>
                     </div>
                 ):(
                     <>
